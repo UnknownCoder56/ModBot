@@ -67,11 +67,11 @@ public class Commands {
             warnMap.get(member.getEffectiveName()).newWarn(args[1]);
         }
         sendMessage(event, "Successfully warned " + member.getEffectiveName() + " for cause:\n" +
-                args[1] + "\nHe/She now has " + warnMap.get(member.getEffectiveName()).warns + " warns.");
+                args[1] + "\nHe/She now has " + warnMap.get(member.getEffectiveName()).warns + " warn(s).");
         User user = member.getUser();
         PrivateChannel channel = user.openPrivateChannel().complete();
         channel.sendMessage("You have been warned in " + event.getGuild().getName() + " for reason: " + args[1]).queue();
-        channel.sendMessage("You now have " + warnMap.get(member.getEffectiveName()).warns + " in that server.").queue();
+        channel.sendMessage("You now have " + warnMap.get(member.getEffectiveName()).warns + " warn(s) in that server.").queue();
         channel.close().queue();
     }
 
