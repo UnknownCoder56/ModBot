@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Warn {
 
-    int warns;
     ArrayList<String> warnCauses = new ArrayList<>();
     Member member;
+    int warns;
 
     public Warn(String cause, Member member) {
         warns++;
