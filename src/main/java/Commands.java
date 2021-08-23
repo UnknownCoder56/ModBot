@@ -72,7 +72,6 @@ public class Commands {
         PrivateChannel channel = user.openPrivateChannel().complete();
         channel.sendMessage("You have been warned in " + event.getGuild().getName() + " for reason: " + args[1]).queue();
         channel.sendMessage("You now have " + warnMap.get(member.getEffectiveName()).warns + " warn(s) in that server.").queue();
-        channel.close().queue();
     }
 
     public static void warns(MessageReceivedEvent event) {
