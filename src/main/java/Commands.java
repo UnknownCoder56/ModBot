@@ -1,9 +1,6 @@
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
-import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.entities.Member;
-import net.dv8tion.jda.api.entities.MessageEmbed;
-import net.dv8tion.jda.api.entities.Role;
+import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.exceptions.HierarchyException;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
@@ -71,6 +68,11 @@ public class Commands {
         }
         sendMessage(event, "Successfully warned " + member.getEffectiveName() + " for cause:\n" +
                 args[1] + "\nHe/She now has " + warnMap.get(member.getEffectiveName()).warns + " warns.");
+        User user = member.getUser();
+        PrivateChannel channel = user.openPrivateChannel().complete();
+        channel.sendMessage("You have been warned in " + event.getGuild().getName() + " for reason: " + args[1]).queue();
+        channel.sendMessage("You now have " + warnMap.get(member.getEffectiveName()).warns + " in that server.").queue();
+        channel.close().queue();
     }
 
     public static void warns(MessageReceivedEvent event) {
